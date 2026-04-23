@@ -1,0 +1,15 @@
+export const gamesList = [
+  "DOORS",
+  "3008",
+  "Rooms & Doors",
+  // "Pressure",
+  "Fisch",
+  "BABFT",
+  "Grace",
+  "Murder Mystery 2",
+  "Word Bomb",
+  "Notoriety",
+  "Dead Rails",
+  "99 Nights In The Forest",
+  "The Forge",
+];
