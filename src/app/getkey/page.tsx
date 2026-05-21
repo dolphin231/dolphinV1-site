@@ -28,8 +28,7 @@ function GetKeyContent() {
       console.log("Param:", key, "=", val);
     });
 
-    const token = searchParams.get("lv_token") || searchParams.get("token");
-    if (token) {
+const token = searchParams.get("checkpoint") || searchParams.get("lv_token") || searchParams.get("token");    if (token) {
       generateKey(token);
     }
   }, [searchParams]);
