@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     description: description,
     images: "https://ibb.co/Fbr0FVty",
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   keywords: [
     "DolphinV1",
     "roblox",
@@ -48,12 +53,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning suppressContentEditableWarning>
-      <head>
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="shortcut icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/icon.png" />
-      </head>
-
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -67,11 +66,6 @@ export default function RootLayout({
           <Analytics />
         </ThemeProvider>
       </body>
-      <head>
-  <link rel="icon" href="/icon.png" type="image/png" />
-  <link rel="shortcut icon" href="/icon.png" type="image/png" />
-  <link rel="apple-touch-icon" href="/icon.png" />
-</head>
     </html>
   );
 }
