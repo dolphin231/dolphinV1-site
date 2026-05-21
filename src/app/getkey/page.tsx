@@ -9,8 +9,7 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 const BACKEND = "https://294f96d1-5cc4-4b07-aa2a-6a03c3fcef55-00-1wrv7m9ub9zep.kirk.replit.dev";
 const LINKVERTISE = "https://link-hub.net/5901706/grOvM6boUYms";
 const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk";
-const SITE_URL = "https://dolphinv1.netlify.app/getkey";
-
+const SITE_URL = "https://dolphinv1-site.onrender.com/getkey";
 function GetKeyContent() {
   const searchParams = useSearchParams();
   const [key, setKey] = useState("");
