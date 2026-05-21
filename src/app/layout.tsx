@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     description: description,
     images: "https://ibb.co/Fbr0FVty",
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   keywords: [
     "DolphinV1",
     "roblox",
