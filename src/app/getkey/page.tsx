@@ -57,7 +57,7 @@ function GetKeyContent() {
   }
 
   function handleGetKey() {
-    window.location.href = `${LINKVERTISE}?r=${encodeURIComponent(SITE_URL)}`;
+    window.location.href = LINKVERTISE + "?r=" + encodeURIComponent(SITE_URL);
   }
 
   function copyKey() {
@@ -156,6 +156,7 @@ function GetKeyContent() {
 }
 
 export default function GetKeyPage() {
+  const lvHref = LINKVERTISE + "?r=" + encodeURIComponent(SITE_URL);
   return (
     <>
       <Navbar className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -170,10 +171,7 @@ export default function GetKeyPage() {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            
-              href={`${LINKVERTISE}?r=${encodeURIComponent(SITE_URL)}`}
-              className="relative text-foreground transition-colors hover:text-neutral-200"
-            >
+            <a href={lvHref} className="relative text-foreground transition-colors hover:text-neutral-200">
               Get a Key
             </a>
           </NavbarItem>
