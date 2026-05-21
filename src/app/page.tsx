@@ -27,7 +27,7 @@ export const dynamic = "force-static";
 const SCRIPT_NAME = "DolphinV1";
 const SCRIPT_TAGLINE = "The best visual spoofer for Rivals";
 const SCRIPT_DESCRIPTION = "Visual spoofing & skin changing for Rivals";
-const KEY_SYSTEM_INFO = "Keys are obtained in our Discord server. Free keys may be coming soon!";
+const KEY_SYSTEM_INFO = "Free 6-hour keys are available via Linkvertise on our key page.";
 const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk"; // ← replace with your Discord invite
 const SCRIPT_LOADSTRING = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/dolphin231/yes/refs/heads/main/DolphinV1"))()'; // ← replace with your loadstring
 const SITE_MADE_BY = "@dolphinbackup on discord"; // ← your name/handle
@@ -50,15 +50,14 @@ export default async function Home() {
         </NavbarBrand>
 
         <NavbarContent justify="end" className="mt-4 mb-4">
-          <NavbarItem>
-            <Link
-              href={DISCORD_INVITE}
-              target="_blank"
-              className="relative text-foreground transition-colors hover:text-neutral-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
-            >
-              Get a Key
-            </Link>
-          </NavbarItem>
+<NavbarItem>
+  <Link
+    href="/getkey"
+    className="relative text-foreground transition-colors hover:text-neutral-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+  >
+    Get a Key
+  </Link>
+</NavbarItem>
           <NavbarItem>
             <Link
               href={DISCORD_INVITE}
