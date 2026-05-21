@@ -67,6 +67,11 @@ export default function RootLayout({
           <Analytics />
         </ThemeProvider>
       </body>
+      <head>
+  <link rel="icon" href="/icon.png" type="image/png" />
+  <link rel="shortcut icon" href="/icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="/icon.png" />
+</head>
     </html>
   );
 }
