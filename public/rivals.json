@@ -1,0 +1,220 @@
+{
+  "structure": {
+    "tabStructure": {
+      "Skins": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": ["Active Loadout", "Weapons"], "Left": ["Cosmetic Unlocker"], "Unknown": []}
+      },
+      "Leaderboard": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": ["Values"], "Left": ["Spoofer"], "Unknown": []}
+      },
+      "Spoofer": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": [], "Left": ["Charm Rank Spoofer"], "Unknown": []}
+      },
+      "Settings": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": ["Auto Reconnect"], "Left": ["Configuration", "Credits"], "Unknown": []}
+      }
+    }
+  },
+  "elements": [],
+  "tabs": {
+    "Skins": {
+      "type": "MainTab",
+      "order": 1,
+      "dependencyGroupboxes": [],
+      "name": "Skins",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "ShirtIcon",
+      "groupboxes": {
+        "Left": {
+          "Cosmetic Unlocker": {
+            "type": "Groupbox",
+            "name": "🔓 Cosmetic Unlocker",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Enter any skin, wrap, charm or finisher. Not case-sensitive."},
+              {"visible": true, "type": "Input", "disabled": false, "index": 2, "value": "", "tooltip": "e.g. AKEY-47", "properties": {"finished": false, "emptyReset": "---", "numeric": false, "clearTextOnFocus": true, "placeholder": "Cosmetic name (e.g. AKEY-47)", "allowEmpty": true}, "text": "Cosmetic Name"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🔓 Unlock & Add to Dropdown", "tooltip": "Unlocks the cosmetic and adds it to the equip dropdown", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Label", "index": 4, "properties": {"addons": [], "doesWrap": true}, "text": "Hold your weapon when selecting from the dropdown."},
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 5, "value": "None", "tooltip": "Select a skin to equip on your held weapon", "properties": {"values": ["None", "AKEY-47", "Goldfish", "Candy Cane", "Neon"], "disabledValues": [], "multi": false}, "text": "Equip on held weapon"}
+            ]
+          }
+        },
+        "Right": {
+          "Active Loadout": {
+            "type": "Groupbox",
+            "name": "🎒 Active Loadout",
+            "order": 1,
+            "side": "Right",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Cosmetics persist per-weapon and save automatically."},
+              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "🔄 Re-apply All", "tooltip": "Re-applies all equipped cosmetics", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🗑️ Clear All Equipped", "tooltip": "Double click to confirm", "properties": {"doubleClick": true, "risky": true, "func": true}}
+            ]
+          },
+          "Weapons": {
+            "type": "Groupbox",
+            "name": "🔫 Weapons",
+            "order": 2,
+            "side": "Right",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Unlocks all weapons visually", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Unlock All Weapons"},
+              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Visual only. Auto-suspends during duels."}
+            ]
+          }
+        },
+        "Unknown": []
+      }
+    },
+    "Leaderboard": {
+      "type": "MainTab",
+      "order": 2,
+      "dependencyGroupboxes": [],
+      "name": "Leaderboard",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "BarChartIcon",
+      "groupboxes": {
+        "Left": {
+          "Spoofer": {
+            "type": "Groupbox",
+            "name": "📊 Spoofer",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Spoofs your leaderboard stats", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Enable Leaderboard Spoof"},
+              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Affects leaderboards, nametag, ranked charm, server list."}
+            ]
+          }
+        },
+        "Right": {
+          "Values": {
+            "type": "Groupbox",
+            "name": "📝 Values",
+            "order": 1,
+            "side": "Right",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Input", "disabled": false, "index": 1, "value": "", "tooltip": "Your spoofed ELO", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 9999", "allowEmpty": true}, "text": "ELO"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 2, "value": "", "tooltip": "Your spoofed win streak", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 50", "allowEmpty": true}, "text": "Win Streak"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 3, "value": "", "tooltip": "Your spoofed win count", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 1000", "allowEmpty": true}, "text": "Most Wins"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 4, "value": "", "tooltip": "Your spoofed elimination count", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 5000", "allowEmpty": true}, "text": "Most Eliminations"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 5, "value": "", "tooltip": "Your spoofed level", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 100", "allowEmpty": true}, "text": "Level"}
+            ]
+          }
+        },
+        "Unknown": []
+      }
+    },
+    "Spoofer": {
+      "type": "MainTab",
+      "order": 3,
+      "dependencyGroupboxes": [],
+      "name": "Spoofer",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "UserIcon",
+      "groupboxes": {
+        "Left": {
+          "Charm Rank Spoofer": {
+            "type": "Groupbox",
+            "name": "🏆 Charm Rank Spoofer",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Spoofs the placement number on your Archnemesis charm. Re-equip charm after enabling."},
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 2, "value": false, "tooltip": "Enable charm rank spoofing", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Enable Charm Rank Spoof"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 3, "value": 1, "tooltip": "Set your displayed placement rank", "properties": {"min": 1, "max": 200, "suffix": "", "prefix": "#", "rounding": 0, "compact": false}, "text": "Placement Rank"}
+            ]
+          }
+        },
+        "Right": {},
+        "Unknown": []
+      }
+    },
+    "Settings": {
+      "type": "MainTab",
+      "order": 4,
+      "dependencyGroupboxes": [],
+      "name": "Settings",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "SettingsIcon",
+      "groupboxes": {
+        "Left": {
+          "Configuration": {
+            "type": "Groupbox",
+            "name": "⚙️ Configuration",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Button", "disabled": false, "index": 1, "text": "💾 Save Config", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "📂 Load Config", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🗑️ Clear Config", "properties": {"doubleClick": true, "risky": true, "func": true}},
+              {"visible": true, "type": "Label", "index": 4, "properties": {"addons": [], "doesWrap": true}, "text": "Config auto-saves. Old/corrupt configs are automatically cleaned on load."}
+            ]
+          },
+          "Credits": {
+            "type": "Groupbox",
+            "name": "❤️ Credits",
+            "order": 2,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "🐬 DolphinV1 Private — fully developed by @dolphinbackup"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "💬 Join Discord", "properties": {"doubleClick": false, "risky": false, "func": true}}
+            ]
+          }
+        },
+        "Right": {
+          "Auto Reconnect": {
+            "type": "Groupbox",
+            "name": "🔁 Auto Reconnect",
+            "order": 1,
+            "side": "Right",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Re-applies settings after returning from a match", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Auto Re-apply After Match"},
+              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Re-applies settings after returning from a match."}
+            ]
+          }
+        },
+        "Unknown": []
+      }
+    }
+  },
+  "metadata": {
+    "toggled": true,
+    "scheme": {
+      "mainColor": "0.0980392, 0.0980392, 0.0980392",
+      "font": "Font { Family = rbxasset://fonts/families/Inconsolata.json, Weight = Regular, Style = Normal }",
+      "accentColor": "0.8, 0.1, 0.1",
+      "outlineColor": "0.156863, 0.156863, 0.156863",
+      "backgroundColor": "0.0588235, 0.0588235, 0.0588235",
+      "fontColor": "1, 1, 1"
+    },
+    "searchText": "",
+    "dpiScale": 1,
+    "notifySide": "Right",
+    "searching": false,
+    "isMobile": false,
+    "isLightTheme": false,
+    "toggleKeybind": "RightShift",
+    "minSize": {"y": 360, "x": 480},
+    "showCustomCursor": true,
+    "forceCheckbox": false,
+    "unloaded": false,
+    "cornerRadius": 4
+  }
+}
