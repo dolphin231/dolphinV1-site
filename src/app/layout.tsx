@@ -8,27 +8,28 @@ import type { ReactNode } from "react";
 import "./globals.css"
 
 const description =
-  "mspaint is the best premium roblox script hub supporting games such as doors, 3008, room & doors, pressure, fisch, build a boat for treasure, grace and murder mystery 2";
+  "DolphinSpooferV1 is the best free skin changer and spoofer for roblox rivals!";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: {
-    default: "mspaint",
-    template: "%s | mspaint",
+    default: "DolphinV1",
+    template: "%s | DolphinV1",
   },
   description: description,
   openGraph: {
     description: description,
-    images: "https://www.mspaint.cc/icon.png",
+    images: "https://ibb.co/Fbr0FVty",
   },
   keywords: [
-    "mspaint",
+    "DolphinV1",
     "roblox",
-    "script",
-    "best script",
-    "working script",
-    "2024",
+    "rivals skin change script",
+    "rivals best script",
+    "working script rivals",
     "2025",
+    "2026",
+    "roblox rivals",
     ...gamesList,
   ],
 };

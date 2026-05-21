@@ -1,11 +1,6 @@
+import { UIStateProvider } from "@/components/obsidian/providers/UIStateProvider";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import DotPattern from "@/components/magicui/dot-pattern";
-import NumberTicker from "@/components/magicui/number-ticker";
-import Safari from "@/components/magicui/safari";
-
-import { lazy } from "react";
-const ReviewMarquee = lazy(() => import("@/components/reviews"));
-
 import { MacbookComponent } from "@/components/ui/macbook";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -18,94 +13,59 @@ import {
 } from "@/components/ui/accordion";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@heroui/navbar";
 import Image from "next/image";
-import Iphone15Pro from "@/components/magicui/iphone-15-pro";
-import WordRotate from "@/components/ui/word-rotate";
 import WordFadeIn from "@/components/ui/word-fade-in";
-import GameCard from "@/components/game-card";
 import { Highlighter } from "@/components/magicui/highlighter";
-import { Suspense } from "react";
 import { Input } from "@/components/ui/input";
 import CopyButton from "@/components/copy-button";
 import { ShinyButton } from "@/components/magicui/shiny-button";
-import Executor from "@/components/executor";
 import { Features } from "@/components/features";
-import DynamicShopButton from "@/components/buy-mspaint";
-import { gamesList } from "@/data/games";
-import {
-  ScrollVelocityContainer,
-  ScrollVelocityRow,
-} from "@/components/magicui/scroll-based-velocity";
-import { UIStateProvider } from "@/components/obsidian/providers/UIStateProvider";
 
 export const dynamic = "force-static";
 
+// ─── EDIT THESE TO CUSTOMIZE YOUR SITE ───────────────────────────────────────
+
+const SCRIPT_NAME = "DolphinV1";
+const SCRIPT_TAGLINE = "The best visual spoofer for Rivals";
+const SCRIPT_DESCRIPTION = "Visual spoofing & skin changing for Rivals";
+const KEY_SYSTEM_INFO = "Keys are obtained in our Discord server. Free keys may be coming soon!";
+const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk"; // ← replace with your Discord invite
+const SCRIPT_LOADSTRING = 'loadstring(game:HttpGet("https://YOUR_SCRIPT_URL_HERE"))()'; // ← replace with your loadstring
+const SITE_MADE_BY = "@dolphinbackup on discord"; // ← your name/handle
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default async function Home() {
-  const guildPromise = fetch(
-    "https://discord.com/api/v9/invites/mspaint?with_counts=true&with_expiration=true",
-    { cache: "force-cache", next: { revalidate: 300 } },
-  )
-    .then((response) => response.json())
-    .catch(() => ({ approximate_member_count: 20000 }));
-
-  const languagesPromise = fetch(
-    "https://raw.githubusercontent.com/mspaint-cc/translations/refs/heads/main/Languages.json",
-    { cache: "force-cache", next: { revalidate: 300 } },
-  )
-    .then((response) => response.json())
-    .catch(() => ({ en: {} }));
-
-  const gameStatusPromise = fetch(
-    "https://raw.githubusercontent.com/mspaint-cc/assets/refs/heads/main/status.json",
-    { cache: "force-cache", next: { revalidate: 60 } },
-  )
-    .then((response) => response.json())
-    .catch(() => ({}));
-
-  const [guildData, languageData, gamesStatusData] = await Promise.all([
-    guildPromise,
-    languagesPromise,
-    gameStatusPromise,
-  ]);
-
   return (
     <>
       <Navbar className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <NavbarBrand>
           <Image
             className="mr-2"
-            alt="mspaint"
+            alt={SCRIPT_NAME}
             src="/icon.png"
             width={25}
             height={25}
           />
-          <p className="font-bold text-inherit">mspaint</p>
+          <p className="font-bold text-inherit">{SCRIPT_NAME}</p>
         </NavbarBrand>
 
         <NavbarContent justify="end" className="mt-4 mb-4">
           <NavbarItem>
             <Link
-              href="/key"
+              href={DISCORD_INVITE}
+              target="_blank"
               className="relative text-foreground transition-colors hover:text-neutral-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
             >
-              Key System
+              Get a Key
             </Link>
           </NavbarItem>
-
           <NavbarItem>
             <Link
-              href="https://shop.mspaint.cc/"
+              href={DISCORD_INVITE}
+              target="_blank"
               className="relative text-foreground transition-colors hover:text-neutral-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
             >
-              Our Shop
-            </Link>
-          </NavbarItem>
-
-          <NavbarItem>
-            <Link
-              href="/subscription-dashboard"
-              className="relative text-foreground transition-colors hover:text-neutral-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full"
-            >
-              Dashboard
+              Discord
             </Link>
           </NavbarItem>
         </NavbarContent>
@@ -128,56 +88,34 @@ export default async function Home() {
           <MacbookComponent
             title={
               <div className="flex flex-col items-center justify-center">
-                <BlurFade delay={0.2 + 1 * 0.05}>
-                  <Link href={"https://shop.mspaint.cc/"} target="_blank">
-                    <div className="flex mb-2">
-                      <div
-                        className={cn(
-                          "group rounded-full border border-black/5 bg-neutral-100 text-base text-white transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800",
-                        )}
-                      >
-                        <DynamicShopButton />
-                      </div>
-                    </div>
-                  </Link>
-                </BlurFade>
-
                 <BlurFade delay={0.2 + 2 * 0.05}>
-                  <h1 className="text-6xl font-bold text-center">mspaint</h1>
+                  <h1 className="text-6xl font-bold text-center">{SCRIPT_NAME}</h1>
                 </BlurFade>
 
                 <BlurFade delay={0.2 + 3 * 0.05}>
-                  <div className="text-2xl flex flex-row justify-center items-center  gap-2">
-                    <span className="font-bold">The best</span>{" "}
-                    <WordRotate duration={2500} words={gamesList} /> script
+                  <div className="text-2xl flex flex-row justify-center items-center gap-2 mt-2">
+                    <span>{SCRIPT_DESCRIPTION}</span>
                   </div>
                 </BlurFade>
 
                 <BlurFade delay={0.2 + 4 * 0.05}>
-                  <div className="flex flex-row items-center justify-center mt-2 gap-2">
+                  <div className="flex flex-row items-center justify-center mt-4 gap-2">
                     <Input
                       type="text"
                       className="overflow-hidden text-ellipsis min-w-[300px]"
                       readOnly
-                      value={
-                        'loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/002c19202c9946e6047b0c6e0ad51f84.lua"))()'
-                      }
+                      value={SCRIPT_LOADSTRING}
                     />
-                    <CopyButton
-                      text={
-                        'loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/002c19202c9946e6047b0c6e0ad51f84.lua"))()'
-                      }
-                    />
+                    <CopyButton text={SCRIPT_LOADSTRING} />
 
                     <Link
                       aria-label="Discord Server"
-                      href={"https://discord.gg/mspaint"}
+                      href={DISCORD_INVITE}
                       target="_blank"
                     >
                       <ShinyButton className="px-2" aria-label="Discord Server">
                         <svg
                           className="w-5 h-5"
-                          id="svg"
                           viewBox="0 0 48 37"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -193,421 +131,68 @@ export default async function Home() {
                 </BlurFade>
               </div>
             }
-            src={`https://ob4fgkbb3w.ufs.sh/f/q5sBExIITNsABaQo4HAKU9TJFX7q3z8ExZVAWyQeLOfamDgu`}
-            outro={
-              <div
-                key={1}
-                className="flex flex-col items-center justify-center max-md:mb-[10rem]"
-              >
-                <BlurFade delay={0.2 + 1 * 0.05} inView>
-                  <h1 className="text-2xl font-bold mt-[5rem] text-center px-5">
-                    Supporting your favorite executors
-                  </h1>
-                </BlurFade>
-
-                <div className="flex flex-row items-center justify-center mt-5 gap-8 max-md:flex-col">
-                  <Executor
-                    name={"Synapse Z"}
-                    image={
-                      "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAstrcP1OfyiFW9CYJnxZHQ6R5wvaPXUIVc0Orp"
-                    }
-                    url={"#"}
-                  />
-
-                  <Executor
-                    name={"Seliware"}
-                    image={
-                      "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs2M1WsFKsE4uqeKTGPFHJZhdvYVzSAOgb9aty"
-                    }
-                    url={"#"}
-                  />
-
-                  {/*<Executor
-                    name={"Solara"}
-                    image={
-                      "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsKTjfEJrg4CbGHLXhvIFxQV5pY6qirBw2Ju7n"
-                    }
-                    url={"#"}
-                  />*/}
-
-                  <Executor
-                    name={"Delta"}
-                    image={
-                      "https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAslPmgsgFtT6a830HkYDKeuAh9RwMGsqd24CQZ"
-                    }
-                    url={"#"}
-                  />
-                </div>
-
-                <BlurFade delay={0.2 + 7 * 0.05} inView>
-                  <h4 className="text-muted-foreground text-sm mt-5">
-                    And many more...
-                  </h4>
-                </BlurFade>
-              </div>
-            }
+            src={`/preview.png`} // ← drop a screenshot of your script into /public/preview.png
             showGradient={true}
           />
         </div>
 
         <UIStateProvider>
-          <div
-            id="games"
-            className="flex flex-col items-center mt-[-15vh] mb-[10vh] text-center overflow-hidden relative"
-          >
-            <WordFadeIn
-              className="text-3xl md:text-3xl"
-              words={`mspaint officially supports ${Object.keys(gamesList).length
-                } games`}
-              inView
-            />
-            <BlurFade className="mb-[15px]" delay={0.2 + 1 * 0.05} inView>
-              <WordFadeIn
-                className="text-xl md:text-xl font-normal"
-                words={`quality & quantity`}
-                inView
-                initialDelay={0.15 * 6}
-                delay={0.35}
-              />
-            </BlurFade>
+  <Features />
+</UIStateProvider>
 
-            <BlurFade
-              className="flex flex-row items-center justify-center mt-5 gap-3 max-md:flex-col flex-wrap px-10"
-              delay={0.2 + 2 * 0.05}
-              inView
-            >
-              <GameCard
-                title={"DOORS"}
-                mappingName={"DOORS - The Hotel"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsJ2hyPErBlZ5kfsQT24O8oeiR73u9rdc6zgm1`}
-                placeId={6516141723}
-                gamesStatusData={gamesStatusData}
-              />
+        <div className="flex flex-col items-center justify-center px-2 text-center mt-10">
 
-              <GameCard
-                title={"Fisch"}
-                mappingName={"Fisch - Fisch"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsncwz3g7ulbhtMx156dQV3GozKUs08gOmX9jv`}
-                placeId={16732694052}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"The Forge"}
-                mappingName={"The Forge - The Forge"}
-                image={`https://ob4fgkbb3w.ufs.sh/f/q5sBExIITNsA6hCEJWHsIMkyhwi9DKxlYHUEu513Bce0vmRr`}
-                placeId={76558904092080}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"99 Nights In The Forest"}
-                mappingName={"DOORS - The Hotel"}
-                image={`https://ob4fgkbb3w.ufs.sh/f/q5sBExIITNsADE6fvhZdFkZ8BrWt7UD6Chu0vipAY5EmbNLK`}
-                placeId={79546208627805}
-                gamesStatusData={gamesStatusData}
-              />
-
-              {/* <GameCard
-                title={"Pressure"}
-                mappingName={"Pressure - Pressure"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsH0LmZ6Layj1tLCfgrzV73ZonhEDeNGAiRdxQ`}
-                placeId={12411473842}
-                gamesStatusData={gamesStatusData}
-              /> */}
-
-              <GameCard
-                title={"3008"}
-                mappingName={"3008 - 3008"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsw0tQCS53yIYB4kajObRWsGN6r8uJDg2QVmKc`}
-                placeId={2768379856}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Dead Rails"}
-                mappingName={"Dead Rails - Dead Rails"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs9AEEhFodlyrJ6uEv40SUmQtNBXAzhP87IaKM`}
-                placeId={116495829188952}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Rooms & Doors"}
-                mappingName={"R&D - R&D"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsbnS21bRQaNIsxXOcZmM8nAt4WkiC0HGreJvP`}
-                placeId={5865058321}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Build A Boat For Treasure"}
-                mappingName={
-                  "Build A Boat For Treasure - Build A Boat For Treasure"
-                }
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs98wtNJodlyrJ6uEv40SUmQtNBXAzhP87IaKM`}
-                placeId={537413528}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Grace"}
-                mappingName={"Grace - Grace"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAs57LO68MxTny6kRILmGKFZcwpAtJ8zEgP1fNh`}
-                placeId={138837502355157}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Murder Mystery 2"}
-                mappingName={"Murder Mystery 2 - Murder Mystery 2"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsBsdLSiOKJxivCc6LDnOGta3RYUHkWNMdS51o`}
-                placeId={142823291}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Word Bomb"}
-                mappingName={"Word Bomb - Word Bomb"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAsJ2uVLQbBlZ5kfsQT24O8oeiR73u9rdc6zgm1`}
-                placeId={2653064683}
-                gamesStatusData={gamesStatusData}
-              />
-
-              <GameCard
-                title={"Notoriety"}
-                mappingName={"Notoriety - Notoriety"}
-                image={`https://q2p0njok3b.ufs.sh/f/Z155p1jPvLAskzKaZ1yN8Yh20HbLkz1KupR6QJWqIBGA9FOj`}
-                placeId={21532277}
-                gamesStatusData={gamesStatusData}
-              />
-            </BlurFade>
-          </div>
-
-          <Features />
-        </UIStateProvider>
-
-        <div className="flex flex-col items-center text-center py-28">
-          <WordFadeIn
-            className="text-3xl md:text-3xl"
-            words={`mspaint is translated in ${Object.keys(languageData).length - 1
-              } languages`}
-            inView
-          />
-          <BlurFade delay={0.2 + 1 * 0.05} inView>
-            <WordFadeIn
-              className="text-xl md:text-xl font-normal"
-              words={`accessibility done right`}
-              inView
-              initialDelay={0.15 * 6}
-              delay={0.25}
-            />
-          </BlurFade>
-
-          <div className="relative flex w-full flex-col items-center justify-center overflow-hidden mt-10 mb-10">
-            <ScrollVelocityContainer className="text-base">
-              {(() => {
-                const labels: string[] = [];
-                const data = languageData || {};
-                Object.keys(data).forEach((code) => {
-                  const entry = data[code];
-                  if (!entry) return;
-                  if (
-                    code === "zh" &&
-                    typeof entry === "object" &&
-                    !("NativeName" in entry)
-                  ) {
-                    Object.keys(entry).forEach((variant) => {
-                      if (variant.toLowerCase() === "default") return;
-                      const v = entry[variant as keyof typeof entry] as {
-                        NativeName: string;
-                        EnglishName: string;
-                      };
-
-                      if (v && (v.NativeName || v.EnglishName)) {
-                        labels.push(v.NativeName || v.EnglishName);
-                      }
-                    });
-                    return;
-                  }
-                  if (entry.NativeName || entry.EnglishName) {
-                    labels.push(entry.NativeName || entry.EnglishName);
-                  }
-                });
-                // ensure English appears if desired, currently excluded by design
-                // labels.unshift("English");
-
-                const mid = Math.ceil(labels.length / 2);
-                const first = labels.slice(0, mid);
-                const second = labels.slice(mid);
-                const Chip = ({ label }: { label: string }) => (
-                  <span className="mx-2 my-1 px-3 py-1 whitespace-nowrap">
-                    {label}
-                  </span>
-                );
-                return (
-                  <>
-                    <ScrollVelocityRow baseVelocity={5} direction={1}>
-                      {first.map((l) => (
-                        <Chip key={`lang-top-${l}`} label={l} />
-                      ))}
-                    </ScrollVelocityRow>
-                    {second.length > 0 && (
-                      <ScrollVelocityRow baseVelocity={5} direction={-1}>
-                        {second.map((l) => (
-                          <Chip key={`lang-bottom-${l}`} label={l} />
-                        ))}
-                      </ScrollVelocityRow>
-                    )}
-                  </>
-                );
-              })()}
-            </ScrollVelocityContainer>
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-          </div>
-
-          <Separator className="mt-[2.5rem] w-[55vw]" />
-        </div>
-
-        <div className="flex flex-col items-center justify-center px-2 text-center">
-          <BlurFade delay={0.2 + 1 * 0.05} className="mb-5" inView>
-            <h1 className="text-3xl font-bold text-center flex flex-col">
-              <span>
-                Used by{" "}
-                <span className="font-bold">
-                  over{" "}
-                  <NumberTicker value={guildData.approximate_member_count} />+
-                  people
-                </span>
-              </span>
-              <span className="text-muted-foreground text-lg">
-                And even by{" "}
-                <span className="font-bold text-white">Kardin Hong</span>
-              </span>
-            </h1>
-          </BlurFade>
-          <BlurFade delay={0.2 + 1.5 * 0.05} inView>
-            <div className="max-md:hidden block">
-              <div className="relative w-[90vw] flex justify-center items-center">
-                <Safari
-                  url="youtube.com"
-                  className=""
-                  src="https://utfs.io/f/q5sBExIITNsAy07ylyEodEnluv6LfbZ04sCwrmkiRPq19FWQ"
-                />
-              </div>
-            </div>
-
-            <div className="max-md:block hidden">
-              <div className="relative w-[90vw] flex justify-center items-center">
-                <Iphone15Pro
-                  src={
-                    "https://utfs.io/f/q5sBExIITNsAPkWgUY54JfWXEC7kbxjzUtwqByLTpnOSZdmY"
-                  }
-                />
-              </div>
-            </div>
-          </BlurFade>
-
-          <Separator className="mt-[2.5rem] w-[55vw]" />
-
-          <h1 id="reviews" className="text-2xl mt-[2.5rem] text-center">
-            Here&apos;s what people say about{" "}
-            <Highlighter action="underline" color="#FF9800" isView>
-              mspaint
+          <h1 className="text-2xl font-bold mt-[2.5rem] text-center">
+            <Highlighter action="underline" color="#38bdf8" isView>
+              {SCRIPT_NAME}
             </Highlighter>
+            {" "}FAQ
           </h1>
-
-          <Suspense fallback={<div>Loading...</div>}>
-            <ReviewMarquee />
-          </Suspense>
-
-          <h1 className="text-2xl font-bold  mt-[2.5rem] text-center">FAQ</h1>
-          <p className="text-muted-foreground">
-            The full FAQ is in the{" "}
-            <Link
-              target="_blank"
-              className="text-white-500 underline"
-              href={"https://discord.gg/mspaint"}
-            >
-              Discord Server
-            </Link>
-          </p>
 
           <Accordion
             id="faq"
             type="single"
             collapsible
-            className="max-w-[1000px] w-[50vw] max-md:w-[75vw]"
+            className="max-w-[1000px] w-[50vw] max-md:w-[75vw] mt-5"
           >
             <AccordionItem value="item-1">
-              <AccordionTrigger>How do I get whitelisted?</AccordionTrigger>
+              <AccordionTrigger>Is this free?</AccordionTrigger>
               <AccordionContent>
-                You can get whitelisted by purchasing a key from the{" "}
-                <Link
-                  className="text-white-500 underline"
-                  href={"https://shop.mspaint.cc/"}
-                >
-                  shop
-                </Link>{" "}
-                or buy going through the{" "}
-                <Link className="text-white-500 underline" href={"/key"}>
-                  key system
-                </Link>
-                .
+                {KEY_SYSTEM_INFO} Join the{" "}
+                <Link className="underline" href={DISCORD_INVITE} target="_blank">Discord</Link>{" "}
+                to get yours.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger>
-                Where can I report bugs and suggest features?
-              </AccordionTrigger>
+              <AccordionTrigger>What does {SCRIPT_NAME} do?</AccordionTrigger>
               <AccordionContent>
-                You can report bugs and suggest features in the{" "}
-                <Link
-                  className="text-white-500 underline"
-                  href={"/subscription-dashboard"}
-                >
-                  Dashboard
-                </Link>
-                .
+                {SCRIPT_NAME} is a visual spoofing and skin changing tool for Rivals on Roblox. It lets you change how your character looks to other players without affecting gameplay.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3">
-              <AccordionTrigger>Does this work on mobile?</AccordionTrigger>
-              <AccordionContent>Yes. mspaint works on mobile.</AccordionContent>
+              <AccordionTrigger>How do I use it?</AccordionTrigger>
+              <AccordionContent>
+                Copy the loadstring above, paste it into your executor, and run it inside Rivals.
+              </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4">
-              <AccordionTrigger>
-                I can&apos;t close the GUI. How can I fix it?
-              </AccordionTrigger>
+              <AccordionTrigger>What executors are supported?</AccordionTrigger>
               <AccordionContent>
-                Close out of the GUI by pressing the shift on the right side of
-                your keyboard.
+                {SCRIPT_NAME} works with most popular executors. Join the Discord for a full compatibility list.
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5">
-              <AccordionTrigger>What games are supported?</AccordionTrigger>
+              <AccordionTrigger>Where do I report bugs?</AccordionTrigger>
               <AccordionContent>
-                As of right now,{" "}
-                {gamesList.slice(0, -1).join(", ") +
-                  " and " +
-                  gamesList.slice(-1)}{" "}
-                are supported.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6">
-              <AccordionTrigger>How do I review the script?</AccordionTrigger>
-              <AccordionContent>
-                You can review the script by using the{" "}
-                <span className="bg-blue-400/70 px-1 py-[0.5px] rounded-sm font-bold">
-                  /review
-                </span>{" "}
-                command in the discord server.
+                Join the{" "}
+                <Link className="underline" href={DISCORD_INVITE} target="_blank">
+                  Discord server
+                </Link>{" "}
+                and post in the bugs channel.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -616,11 +201,11 @@ export default async function Home() {
 
           <div className="px-10 py-6 w-screen flex flex-row justify-between items-center max-md:justify-center max-md:flex-col">
             <div className="px-2 py-2 flex flex-row items-center gap-2">
-              <Image alt="mspaint" src="/icon.png" width={25} height={25} />
+              <Image alt={SCRIPT_NAME} src="/icon.png" width={25} height={25} />
               <div>
-                <p className="text-xs text-left">mspaint</p>
+                <p className="text-xs text-left">{SCRIPT_NAME}</p>
                 <p className="text-muted-foreground text-xs">
-                  Site made by upio
+                  Site made by {SITE_MADE_BY}
                 </p>
               </div>
             </div>
@@ -628,8 +213,8 @@ export default async function Home() {
               This software is not affiliated, associated, authorized, endorsed
               by, or
               <br />
-              in any way officially connected with Roblox or Microsoft or any of
-              its subsidiaries or its affiliates.
+              in any way officially connected with Roblox or any of its
+              subsidiaries or its affiliates.
             </p>
           </div>
         </div>

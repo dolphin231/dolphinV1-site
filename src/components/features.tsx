@@ -134,7 +134,7 @@ export function Features() {
   const memoizedObsidian = React.useMemo(() => {
     return (
       <Obsidian
-        title={"mspaint v4"}
+        title={"DolphinV1"}
         icon={"/icon.png"}
         footer={`Game: ${footerGame} | Build: ${LatestBuild}`}
         uiData={uiData}
@@ -168,7 +168,7 @@ export function Features() {
     >
       <WordFadeIn
         className="text-3xl md:text-3xl mb-5"
-        words={`mspaint features:`}
+        words={`DolphinV1 features:`}
         inView
       />
 
