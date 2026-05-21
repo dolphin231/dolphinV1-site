@@ -24,8 +24,8 @@ const UIStateContext = React.createContext<UIStateContextType | null>(null);
 
 export function UIStateProvider({ children }: { children: ReactNode }) {
 	const [state, setStateMap] = React.useState<UIState>({});
-	const [game, setGame] = React.useState("DOORS - The Hotel");
-  	const [footerGame, setFooterGame] = React.useState("DOORS");
+const [game, setGame] = React.useState("Rivals - Rivals");
+const [footerGame, setFooterGame] = React.useState("Rivals");
 
 	const stateRef = React.useRef<UIState>({});
 	const listenersRef = React.useRef<Map<string, Set<() => void>>>(new Map());
