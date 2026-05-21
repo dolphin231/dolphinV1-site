@@ -20,6 +20,15 @@ function GetKeyContent() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    console.log("Full URL:", window.location.href);
+    console.log("Search:", window.location.search);
+    console.log("Hash:", window.location.hash);
+
+    const params = new URLSearchParams(window.location.search);
+    params.forEach((val, key) => {
+        console.log("Param:", key, "=", val);
+    });
+
     const token = searchParams.get("lv_token") || searchParams.get("token");
     if (token) {
       generateKey(token);
