@@ -29,7 +29,7 @@ const SCRIPT_TAGLINE = "The best visual spoofer for Rivals";
 const SCRIPT_DESCRIPTION = "Visual spoofing & skin changing for Rivals";
 const KEY_SYSTEM_INFO = "Keys are obtained in our Discord server. Free keys may be coming soon!";
 const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk"; // ← replace with your Discord invite
-const SCRIPT_LOADSTRING = 'loadstring(game:HttpGet("https://YOUR_SCRIPT_URL_HERE"))()'; // ← replace with your loadstring
+const SCRIPT_LOADSTRING = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/dolphin231/yes/refs/heads/main/DolphinV1"))()'; // ← replace with your loadstring
 const SITE_MADE_BY = "@dolphinbackup on discord"; // ← your name/handle
 
 // ─────────────────────────────────────────────────────────────────────────────
