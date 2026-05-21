@@ -21,11 +21,6 @@ export const metadata: Metadata = {
     description: description,
     images: "https://ibb.co/Fbr0FVty",
   },
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
-  },
   keywords: [
     "DolphinV1",
     "roblox",
@@ -53,9 +48,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning suppressContentEditableWarning>
-      {/* <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-      </head> */}
+      <head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+      </head>
 
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
