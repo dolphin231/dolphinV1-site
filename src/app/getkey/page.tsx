@@ -26,7 +26,7 @@ function GetKeyContent() {
 
     const params = new URLSearchParams(window.location.search);
     params.forEach((val, key) => {
-        console.log("Param:", key, "=", val);
+      console.log("Param:", key, "=", val);
     });
 
     const token = searchParams.get("lv_token") || searchParams.get("token");
@@ -57,8 +57,7 @@ function GetKeyContent() {
   }
 
   function handleGetKey() {
-    const returnUrl = encodeURIComponent(SITE_URL);
-    window.location.href = `${LINKVERTISE}?r=${returnUrl}`;
+    window.location.href = `${LINKVERTISE}?r=${encodeURIComponent(SITE_URL)}`;
   }
 
   function copyKey() {
@@ -125,12 +124,13 @@ function GetKeyContent() {
                 {copied ? "✅ Copied!" : "📋 Copy Key"}
               </button>
               <p className="text-red-400 text-xs">⏰ Expires at {expires} (6 hours)</p>
-              <p className="text-muted-foreground text-xs">
-                Redeem in the{" "}
-                <Link href={DISCORD_INVITE} target="_blank" className="underline text-sky-400">
-                  Discord bot
-                </Link>
-              </p>
+              <Link
+                href={DISCORD_INVITE}
+                target="_blank"
+                className="block w-full bg-indigo-600 hover:bg-indigo-500 transition-colors text-white font-medium py-2.5 px-6 rounded-xl text-sm"
+              >
+                💬 Join Discord
+              </Link>
             </div>
           )}
 
@@ -168,6 +168,14 @@ export default function GetKeyPage() {
             <Link href="/" className="relative text-foreground transition-colors hover:text-neutral-200">
               Home
             </Link>
+          </NavbarItem>
+          <NavbarItem>
+            
+              href={`${LINKVERTISE}?r=${encodeURIComponent(SITE_URL)}`}
+              className="relative text-foreground transition-colors hover:text-neutral-200"
+            >
+              Get a Key
+            </a>
           </NavbarItem>
           <NavbarItem>
             <Link href={DISCORD_INVITE} target="_blank" className="relative text-foreground transition-colors hover:text-neutral-200">
