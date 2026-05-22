@@ -27,8 +27,7 @@ export default function middleware(req: NextRequest) {
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https://www.mspaint.cc https://mspaint.cc https://cdn.discordapp.com/avatars/ https://raw.githubusercontent.com/mspaint-cc/ https://utfs.io https://ob4fgkbb3w.ufs.sh https://q2p0njok3b.ufs.sh;
     font-src 'self' data:;
-    connect-src 'self' https://www.mspaint.cc https://mspaint.cc https://va.vercel-scripts.com https://vitals.vercel-insights.com https://raw.githubusercontent.com/mspaint-cc/;
-    object-src 'none';
+    connect-src 'self' https://www.mspaint.cc https://mspaint.cc https://va.vercel-scripts.com https://vitals.vercel-insights.com https://raw.githubusercontent.com/mspaint-cc/ https://294f96d1-5cc4-4b07-aa2a-6a03c3fcef55-00-1wrv7m9ub9zep.kirk.replit.dev;    object-src 'none';
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'self' https://shop.mspaint.cc https://www.mspaint.cc https://mspaint.cc;
