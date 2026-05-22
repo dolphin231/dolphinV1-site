@@ -10,6 +10,7 @@ const BACKEND = "https://294f96d1-5cc4-4b07-aa2a-6a03c3fcef55-00-1wrv7m9ub9zep.k
 const LINKVERTISE = "https://link-hub.net/5901706/grOvM6boUYms";
 const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk";
 const SITE_URL = "https://dolphinv1-site.onrender.com/getkey";
+
 function GetKeyContent() {
   const searchParams = useSearchParams();
   const [key, setKey] = useState("");
@@ -28,15 +29,16 @@ function GetKeyContent() {
       console.log("Param:", key, "=", val);
     });
 
-const token = searchParams.get("checkpoint") || searchParams.get("lv_token") || searchParams.get("token");    if (token) {
-      generateKey(token);
+    const checkpoint = searchParams.get("checkpoint");
+    if (checkpoint) {
+      generateKey(checkpoint);
     }
   }, [searchParams]);
 
-  async function generateKey(token: string) {
+  async function generateKey(checkpoint: string) {
     setStatus("loading");
     try {
-      const res = await fetch(`${BACKEND}/getfreekey?checkpoint=${encodeURIComponent(token)}`);
+      const res = await fetch(`${BACKEND}/getfreekey?checkpoint=${encodeURIComponent(checkpoint)}`);
       const data = await res.json();
       if (data.success) {
         setKey(data.key);
@@ -55,7 +57,9 @@ const token = searchParams.get("checkpoint") || searchParams.get("lv_token") || 
   }
 
   function handleGetKey() {
-    window.location.href = LINKVERTISE + "?r=" + encodeURIComponent(SITE_URL);
+    window.location.href = LINKVERTISE + "?r=" + encodeURIComponent(
+      BACKEND + "/go"
+    );
   }
 
   function copyKey() {
@@ -154,7 +158,7 @@ const token = searchParams.get("checkpoint") || searchParams.get("lv_token") || 
 }
 
 export default function GetKeyPage() {
-  const lvHref = LINKVERTISE + "?r=" + encodeURIComponent(SITE_URL);
+  const lvHref = LINKVERTISE + "?r=" + encodeURIComponent(BACKEND + "/go");
   return (
     <>
       <Navbar className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/60">
