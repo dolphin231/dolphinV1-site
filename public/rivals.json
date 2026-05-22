@@ -1,114 +1,161 @@
 {
   "structure": {
     "tabStructure": {
-      "Skins": {
-        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
-        "groupboxes": {"Right": ["Active Loadout", "Weapons"], "Left": ["Cosmetic Unlocker"], "Unknown": []}
+      "Cosmetics": {
+        "tabboxes": {"Right": [], "Left": ["Equip"], "Unknown": []},
+        "groupboxes": {"Right": ["Manage"], "Left": ["Unlock by Rarity"], "Unknown": []}
       },
-      "Leaderboard": {
+      "Weapons": {
         "tabboxes": {"Right": [], "Left": [], "Unknown": []},
-        "groupboxes": {"Right": ["Values"], "Left": ["Spoofer"], "Unknown": []}
+        "groupboxes": {"Right": [], "Left": ["Weapon Unlock"], "Unknown": []}
+      },
+      "Inventory": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": ["Fake Owned Cosmetics"], "Left": ["Inject Case / Box"], "Unknown": []}
       },
       "Spoofer": {
         "tabboxes": {"Right": [], "Left": [], "Unknown": []},
-        "groupboxes": {"Right": [], "Left": ["Charm Rank Spoofer"], "Unknown": []}
+        "groupboxes": {"Right": ["Notes"], "Left": ["Leaderboard Spoof"], "Unknown": []}
+      },
+      "Misc": {
+        "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+        "groupboxes": {"Right": [], "Left": ["Miscellaneous"], "Unknown": []}
       },
       "Settings": {
         "tabboxes": {"Right": [], "Left": [], "Unknown": []},
-        "groupboxes": {"Right": ["Auto Reconnect"], "Left": ["Configuration", "Credits"], "Unknown": []}
+        "groupboxes": {"Right": [], "Left": ["Theme"], "Unknown": []}
       }
     }
   },
   "elements": [],
   "tabs": {
-    "Skins": {
+    "Cosmetics": {
       "type": "MainTab",
       "order": 1,
       "dependencyGroupboxes": [],
-      "name": "Skins",
-      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "name": "Cosmetics",
+      "tabboxes": {"Right": [], "Left": ["Equip"], "Unknown": []},
       "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
-      "icon": "ShirtIcon",
+      "icon": "PaletteIcon",
       "groupboxes": {
         "Left": {
-          "Cosmetic Unlocker": {
+          "Unlock by Rarity": {
             "type": "Groupbox",
-            "name": "🔓 Cosmetic Unlocker",
+            "name": "Unlock by Rarity",
             "order": 1,
             "side": "Left",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Enter any skin, wrap, charm or finisher. Not case-sensitive."},
-              {"visible": true, "type": "Input", "disabled": false, "index": 2, "value": "", "tooltip": "e.g. AKEY-47", "properties": {"finished": false, "emptyReset": "---", "numeric": false, "clearTextOnFocus": true, "placeholder": "Cosmetic name (e.g. AKEY-47)", "allowEmpty": true}, "text": "Cosmetic Name"},
-              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🔓 Unlock & Add to Dropdown", "tooltip": "Unlocks the cosmetic and adds it to the equip dropdown", "properties": {"doubleClick": false, "risky": false, "func": true}},
-              {"visible": true, "type": "Label", "index": 4, "properties": {"addons": [], "doesWrap": true}, "text": "Hold your weapon when selecting from the dropdown."},
-              {"visible": true, "type": "Dropdown", "disabled": false, "index": 5, "value": "None", "tooltip": "Select a skin to equip on your held weapon", "properties": {"values": ["None", "AKEY-47", "Goldfish", "Candy Cane", "Neon"], "disabledValues": [], "multi": false}, "text": "Equip on held weapon"}
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 1, "value": "Skin", "tooltip": "Select cosmetic type to unlock", "properties": {"values": ["Skin", "Wrap", "Charm", "Finisher"], "disabledValues": [], "multi": false}, "text": "Cosmetic Type"},
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 2, "value": "Mythical", "tooltip": "Select rarity to unlock", "properties": {"values": ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythical"], "disabledValues": [], "multi": false}, "text": "Rarity"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "Unlock Selected Rarity", "tooltip": "Unlocks all cosmetics of the selected type and rarity", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 4, "text": "Unlock All of Type", "tooltip": "Unlocks every cosmetic of the selected type", "properties": {"doubleClick": false, "risky": false, "func": true}}
+            ]
+          },
+          "Equip": {
+            "type": "Tabbox",
+            "name": "Equip",
+            "order": 2,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 1, "value": "Skin", "tooltip": "Filter cosmetic dropdown by type", "properties": {"values": ["Skin", "Wrap", "Charm", "Finisher"], "disabledValues": [], "multi": false}, "text": "Type"},
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 2, "value": "Assault Rifle", "tooltip": "Select weapon to equip cosmetic on", "properties": {"values": ["Assault Rifle", "Battle Axe", "Bow", "Burst Rifle", "Chainsaw", "Crossbow", "Daggers", "Distortion", "Energy Pistols", "Energy Rifle", "Exogun", "Fists", "Flare Gun", "Flamethrower", "Freeze Ray", "Grenade", "Grenade Launcher", "Grappler", "Gunblade", "Handgun", "Jump Pad", "Katana", "Knife", "Maul", "Medkit", "Minigun", "Molotov", "Paintball Gun", "Permafrost", "Revolver", "Riot Shield", "RPG", "Satchel", "Scythe", "Shotgun", "Shorty", "Slingshot", "Smoke Grenade", "Sniper", "Spear", "Spray", "Subspace Tripmine", "Trowel", "Uzi", "War Horn", "Warper", "Warpstone"], "disabledValues": [], "multi": false}, "text": "Weapon"},
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 3, "value": "None", "tooltip": "Select unlocked cosmetic to equip", "properties": {"values": ["None"], "disabledValues": [], "multi": false}, "text": "Cosmetic"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 4, "text": "Equip", "tooltip": "Equips selected cosmetic to selected weapon", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 5, "text": "Unequip All from Weapon", "tooltip": "Removes all cosmetics from selected weapon", "properties": {"doubleClick": false, "risky": false, "func": true}}
             ]
           }
         },
         "Right": {
-          "Active Loadout": {
+          "Manage": {
             "type": "Groupbox",
-            "name": "🎒 Active Loadout",
+            "name": "Manage",
             "order": 1,
             "side": "Right",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Cosmetics persist per-weapon and save automatically."},
-              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "🔄 Re-apply All", "tooltip": "Re-applies all equipped cosmetics", "properties": {"doubleClick": false, "risky": false, "func": true}},
-              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🗑️ Clear All Equipped", "tooltip": "Double click to confirm", "properties": {"doubleClick": true, "risky": true, "func": true}}
-            ]
-          },
-          "Weapons": {
-            "type": "Groupbox",
-            "name": "🔫 Weapons",
-            "order": 2,
-            "side": "Right",
-            "dependencyBoxes": [],
-            "elements": [
-              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Unlocks all weapons visually", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Unlock All Weapons"},
-              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Visual only. Auto-suspends during duels."}
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 1, "value": "Skin", "tooltip": "Cosmetic type for manage operations", "properties": {"values": ["Skin", "Wrap", "Charm", "Finisher"], "disabledValues": [], "multi": false}, "text": "Cosmetic Type"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 2, "value": "", "tooltip": "e.g. Vexed", "properties": {"finished": false, "emptyReset": "---", "numeric": false, "clearTextOnFocus": true, "placeholder": "e.g. Vexed", "allowEmpty": true}, "text": "Cosmetic Name"},
+              {"visible": true, "type": "Input", "disabled": false, "index": 3, "value": "", "tooltip": "e.g. Assault Rifle", "properties": {"finished": false, "emptyReset": "---", "numeric": false, "clearTextOnFocus": true, "placeholder": "e.g. Assault Rifle", "allowEmpty": true}, "text": "Weapon Name"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 4, "text": "Unlock Specific", "tooltip": "Unlocks the named cosmetic (type must match)", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 5, "text": "Unlock for Weapon", "tooltip": "Unlocks and equips cosmetic to the named weapon", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 6, "text": "Lock for Weapon", "tooltip": "Removes the selected cosmetic type from the named weapon", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 7, "text": "Unlock All for Weapon", "tooltip": "Unlocks all cosmetics of selected type and equips one randomly to weapon", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 8, "text": "Lock All for Weapon", "tooltip": "Removes all equipped cosmetics from the named weapon", "properties": {"doubleClick": false, "risky": true, "func": true}},
+              {"visible": true, "type": "Divider", "index": 9, "properties": {}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 10, "text": "Unlock All", "tooltip": "Runs full external unlock all script", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 11, "text": "Lock All", "tooltip": "Clears all unlocked cosmetics", "properties": {"doubleClick": true, "risky": true, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 12, "text": "Unlock Random", "tooltip": "Unlocks a random cosmetic of the selected type", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 13, "text": "Lock Random", "tooltip": "Locks a random unlocked cosmetic of the selected type", "properties": {"doubleClick": false, "risky": false, "func": true}}
             ]
           }
         },
         "Unknown": []
       }
     },
-    "Leaderboard": {
+    "Weapons": {
       "type": "MainTab",
       "order": 2,
       "dependencyGroupboxes": [],
-      "name": "Leaderboard",
+      "name": "Weapons",
       "tabboxes": {"Right": [], "Left": [], "Unknown": []},
       "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
-      "icon": "BarChartIcon",
+      "icon": "SwordIcon",
       "groupboxes": {
         "Left": {
-          "Spoofer": {
+          "Weapon Unlock": {
             "type": "Groupbox",
-            "name": "📊 Spoofer",
+            "name": "Weapon Unlock",
             "order": 1,
             "side": "Left",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Spoofs your leaderboard stats", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Enable Leaderboard Spoof"},
-              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Affects leaderboards, nametag, ranked charm, server list."}
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Unlocks all weapons visually in your loadout", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Unlock All Weapons"},
+              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "⚠ Visual only. Applies to your local client. Rejoin to revert."}
+            ]
+          }
+        },
+        "Right": {},
+        "Unknown": []
+      }
+    },
+    "Inventory": {
+      "type": "MainTab",
+      "order": 3,
+      "dependencyGroupboxes": [],
+      "name": "Inventory",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "PackageIcon",
+      "groupboxes": {
+        "Left": {
+          "Inject Case / Box": {
+            "type": "Groupbox",
+            "name": "Inject Case / Box",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Dropdown", "disabled": false, "index": 1, "value": "Charm Capsule", "tooltip": "Select a case or box to inject", "properties": {"values": ["Charm Capsule", "Festive Skin Case", "Festive Wrap Box", "Festive Wrap Box 2", "Finisher Pack", "Finisher Pack 2", "Haunted Chest", "Jolly Chest", "Skin Case", "Skin Case 2", "Skin Case 3", "Spooky Skin Case", "Wrap Box", "Wrap Box 2", "Wrap Box 3"], "disabledValues": [], "multi": false}, "text": "Case / Box"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 2, "value": 1, "tooltip": "How many to inject", "properties": {"min": 1, "max": 99, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Quantity"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "Inject into Backpack", "tooltip": "Adds the selected case to your backpack", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 4, "text": "Clear Injected Items", "tooltip": "Removes all injected items from backpack", "properties": {"doubleClick": false, "risky": false, "func": true}}
             ]
           }
         },
         "Right": {
-          "Values": {
+          "Fake Owned Cosmetics": {
             "type": "Groupbox",
-            "name": "📝 Values",
+            "name": "Fake Owned Cosmetics",
             "order": 1,
             "side": "Right",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Input", "disabled": false, "index": 1, "value": "", "tooltip": "Your spoofed ELO", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 9999", "allowEmpty": true}, "text": "ELO"},
-              {"visible": true, "type": "Input", "disabled": false, "index": 2, "value": "", "tooltip": "Your spoofed win streak", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 50", "allowEmpty": true}, "text": "Win Streak"},
-              {"visible": true, "type": "Input", "disabled": false, "index": 3, "value": "", "tooltip": "Your spoofed win count", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 1000", "allowEmpty": true}, "text": "Most Wins"},
-              {"visible": true, "type": "Input", "disabled": false, "index": 4, "value": "", "tooltip": "Your spoofed elimination count", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 5000", "allowEmpty": true}, "text": "Most Eliminations"},
-              {"visible": true, "type": "Input", "disabled": false, "index": 5, "value": "", "tooltip": "Your spoofed level", "properties": {"finished": false, "emptyReset": "---", "numeric": true, "clearTextOnFocus": true, "placeholder": "e.g. 100", "allowEmpty": true}, "text": "Level"}
+              {"visible": true, "type": "Input", "disabled": false, "index": 1, "value": "", "tooltip": "e.g. Vexed", "properties": {"finished": false, "emptyReset": "---", "numeric": false, "clearTextOnFocus": true, "placeholder": "e.g. Vexed", "allowEmpty": true}, "text": "Cosmetic Name"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "Add to Owned", "tooltip": "Marks cosmetic as owned without unlocking", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "Remove from Owned", "tooltip": "Removes cosmetic from fake owned list", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 4, "text": "Clear All Fake Owned", "tooltip": "Clears all fake owned cosmetics", "properties": {"doubleClick": false, "risky": true, "func": true}}
             ]
           }
         },
@@ -117,7 +164,7 @@
     },
     "Spoofer": {
       "type": "MainTab",
-      "order": 3,
+      "order": 4,
       "dependencyGroupboxes": [],
       "name": "Spoofer",
       "tabboxes": {"Right": [], "Left": [], "Unknown": []},
@@ -125,16 +172,62 @@
       "icon": "UserIcon",
       "groupboxes": {
         "Left": {
-          "Charm Rank Spoofer": {
+          "Leaderboard Spoof": {
             "type": "Groupbox",
-            "name": "🏆 Charm Rank Spoofer",
+            "name": "Leaderboard Spoof",
             "order": 1,
             "side": "Left",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Spoofs the placement number on your Archnemesis charm. Re-equip charm after enabling."},
-              {"visible": true, "type": "Toggle", "disabled": false, "index": 2, "value": false, "tooltip": "Enable charm rank spoofing", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Enable Charm Rank Spoof"},
-              {"visible": true, "type": "Slider", "disabled": false, "index": 3, "value": 1, "tooltip": "Set your displayed placement rank", "properties": {"min": 1, "max": 200, "suffix": "", "prefix": "#", "rounding": 0, "compact": false}, "text": "Placement Rank"}
+              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Spoofs your leaderboard stats", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Enable Spoof"},
+              {"visible": true, "type": "Divider", "index": 2, "properties": {}},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 3, "value": 0, "tooltip": "Spoofed ELO value", "properties": {"min": 0, "max": 9999, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Highest ELO"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 4, "value": 0, "tooltip": "Spoofed win streak", "properties": {"min": 0, "max": 9999, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Win Streak"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 5, "value": 0, "tooltip": "Spoofed win count", "properties": {"min": 0, "max": 99999, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Most Wins"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 6, "value": 0, "tooltip": "Spoofed elimination count", "properties": {"min": 0, "max": 99999, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Most Eliminations"},
+              {"visible": true, "type": "Slider", "disabled": false, "index": 7, "value": 0, "tooltip": "Spoofed level", "properties": {"min": 0, "max": 9999, "suffix": "", "prefix": "", "rounding": 0, "compact": false}, "text": "Highest Level"},
+              {"visible": true, "type": "Button", "disabled": false, "index": 8, "text": "Apply Nametag Now", "tooltip": "Applies spoofed values to your nametag immediately", "properties": {"doubleClick": false, "risky": false, "func": true}}
+            ]
+          }
+        },
+        "Right": {
+          "Notes": {
+            "type": "Groupbox",
+            "name": "Notes",
+            "order": 1,
+            "side": "Right",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Leaderboard spoof affects what you see and what others see on the leaderboard UI. Values only apply when 'Enable Spoof' is on."},
+              {"visible": true, "type": "Divider", "index": 2, "properties": {}},
+              {"visible": true, "type": "Label", "index": 3, "properties": {"addons": [], "doesWrap": true}, "text": "Nametag ELO, Level, and Win Streak are set on CharacterAdded and on manual apply."}
+            ]
+          }
+        },
+        "Unknown": []
+      }
+    },
+    "Misc": {
+      "type": "MainTab",
+      "order": 5,
+      "dependencyGroupboxes": [],
+      "name": "Misc",
+      "tabboxes": {"Right": [], "Left": [], "Unknown": []},
+      "warningBox": {"Visible": false, "Title": "", "IsNormal": false, "Text": "", "LockSize": false},
+      "icon": "ZapIcon",
+      "groupboxes": {
+        "Left": {
+          "Miscellaneous": {
+            "type": "Groupbox",
+            "name": "Miscellaneous",
+            "order": 1,
+            "side": "Left",
+            "dependencyBoxes": [],
+            "elements": [
+              {"visible": true, "type": "Button", "disabled": false, "index": 1, "text": "Reload Config", "tooltip": "Reloads dolphin_config.json from disk", "properties": {"doubleClick": false, "risky": false, "func": true}},
+              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "Clear All Config", "tooltip": "Double click to reset all saved data", "properties": {"doubleClick": true, "risky": true, "func": true}},
+              {"visible": true, "type": "Divider", "index": 3, "properties": {}},
+              {"visible": true, "type": "Label", "index": 4, "properties": {"addons": [], "doesWrap": true}, "text": "Dolphin V1 | Private Tool — Only YOU see cosmetics. No gameplay advantage."}
             ]
           }
         },
@@ -144,7 +237,7 @@
     },
     "Settings": {
       "type": "MainTab",
-      "order": 4,
+      "order": 6,
       "dependencyGroupboxes": [],
       "name": "Settings",
       "tabboxes": {"Right": [], "Left": [], "Unknown": []},
@@ -152,44 +245,18 @@
       "icon": "SettingsIcon",
       "groupboxes": {
         "Left": {
-          "Configuration": {
+          "Theme": {
             "type": "Groupbox",
-            "name": "⚙️ Configuration",
+            "name": "Theme",
             "order": 1,
             "side": "Left",
             "dependencyBoxes": [],
             "elements": [
-              {"visible": true, "type": "Button", "disabled": false, "index": 1, "text": "💾 Save Config", "properties": {"doubleClick": false, "risky": false, "func": true}},
-              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "📂 Load Config", "properties": {"doubleClick": false, "risky": false, "func": true}},
-              {"visible": true, "type": "Button", "disabled": false, "index": 3, "text": "🗑️ Clear Config", "properties": {"doubleClick": true, "risky": true, "func": true}},
-              {"visible": true, "type": "Label", "index": 4, "properties": {"addons": [], "doesWrap": true}, "text": "Config auto-saves. Old/corrupt configs are automatically cleaned on load."}
-            ]
-          },
-          "Credits": {
-            "type": "Groupbox",
-            "name": "❤️ Credits",
-            "order": 2,
-            "side": "Left",
-            "dependencyBoxes": [],
-            "elements": [
-              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "🐬 DolphinV1 Private — fully developed by @dolphinbackup"},
-              {"visible": true, "type": "Button", "disabled": false, "index": 2, "text": "💬 Join Discord", "properties": {"doubleClick": false, "risky": false, "func": true}}
+              {"visible": true, "type": "Label", "index": 1, "properties": {"addons": [], "doesWrap": true}, "text": "Customize the UI theme using the ThemeManager controls below."}
             ]
           }
         },
-        "Right": {
-          "Auto Reconnect": {
-            "type": "Groupbox",
-            "name": "🔁 Auto Reconnect",
-            "order": 1,
-            "side": "Right",
-            "dependencyBoxes": [],
-            "elements": [
-              {"visible": true, "type": "Toggle", "disabled": false, "index": 1, "value": false, "tooltip": "Re-applies settings after returning from a match", "properties": {"variant": "Switch", "addons": [], "risky": false, "callback": true, "changed": true}, "text": "Auto Re-apply After Match"},
-              {"visible": true, "type": "Label", "index": 2, "properties": {"addons": [], "doesWrap": true}, "text": "Re-applies settings after returning from a match."}
-            ]
-          }
-        },
+        "Right": {},
         "Unknown": []
       }
     }
@@ -197,11 +264,11 @@
   "metadata": {
     "toggled": true,
     "scheme": {
-      "mainColor": "0.0980392, 0.0980392, 0.0980392",
-      "font": "Font { Family = rbxasset://fonts/families/Inconsolata.json, Weight = Regular, Style = Normal }",
-      "accentColor": "0.8, 0.1, 0.1",
-      "outlineColor": "0.156863, 0.156863, 0.156863",
-      "backgroundColor": "0.0588235, 0.0588235, 0.0588235",
+      "mainColor": "0.117647, 0.117647, 0.117647",
+      "font": "Font { Family = rbxasset://fonts/families/GothamSSm.json, Weight = Medium, Style = Normal }",
+      "accentColor": "0.490196, 0.333333, 1",
+      "outlineColor": "0.196078, 0.196078, 0.196078",
+      "backgroundColor": "0.0705882, 0.0705882, 0.0705882",
       "fontColor": "1, 1, 1"
     },
     "searchText": "",
@@ -215,6 +282,6 @@
     "showCustomCursor": true,
     "forceCheckbox": false,
     "unloaded": false,
-    "cornerRadius": 4
+    "cornerRadius": 6
   }
 }
