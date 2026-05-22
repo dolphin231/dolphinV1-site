@@ -36,7 +36,7 @@ const token = searchParams.get("checkpoint") || searchParams.get("lv_token") || 
   async function generateKey(token: string) {
     setStatus("loading");
     try {
-      const res = await fetch(`${BACKEND}/getfreekey?token=${encodeURIComponent(token)}`);
+      const res = await fetch(`${BACKEND}/getfreekey?checkpoint=${encodeURIComponent(token)}`);
       const data = await res.json();
       if (data.success) {
         setKey(data.key);
