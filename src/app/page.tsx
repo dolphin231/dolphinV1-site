@@ -30,7 +30,7 @@ const SCRIPT_DESCRIPTION = "Visual spoofing & skin changing for Rivals";
 const KEY_SYSTEM_INFO = "Free 6-hour keys are available via Linkvertise on our key page.";
 const DISCORD_INVITE = "https://discord.gg/7qQMDsJnPk"; // ← replace with your Discord invite
 const SCRIPT_LOADSTRING = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/dolphin231/yes/refs/heads/main/DolphinV1"))()'; // ← replace with your loadstring
-const SITE_MADE_BY = "@dolphinbackup on discord"; // ← your name/handle
+const SITE_MADE_BY = "@dolphinbackup on discord, site follows the license :D"; // ← your name/handle
 
 // ─────────────────────────────────────────────────────────────────────────────
 
